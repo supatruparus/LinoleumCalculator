@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>HTML Calculator</title>
+<meta  charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+</head>
+<style>
+  @font-face {
+  font-family: "Orloj";
+  font-style: normal;
+  font-weight: 400;
+
+  /* Браузер сначала попробует найти шрифт локально */
+  src: local("Orloj"),
+       /* Если не получилось, загрузит woff2 */
+       url("https://www.fontspace.com/orloj-font-f54384") format("otf"),
+       /* Если браузер не поддерживает woff2, загрузит woff */
+       url("https://www.fontspace.com/orloj-font-f54384") format("otf");
+}
+
+/* Теперь можно использовать шрифт */
+body {
+  font-family: "Orloj", "Roboto", "Arial", sans-serif;
+}
+  #date {
+    font-family: "Orloj","Arial";
+  }
+				
+								
+								
+								
+				
+  table {border: 5;
+    color: #ffffff;}
+    input { outline: none; padding: 12px; border-radius: 3px; border: 1px solid black; } ::-webkit-input-placeholder { /* Chrome */ color: gray;text-align: center;transition: opacity 250ms ease-in-out; } 
+   
+ </style>
+ <br>
+ 
+<body onload ="calculate();" bgcolor= "#000000" text= "gray" > <div id="container"> 
+<div id="disc"></div> </div>
+
+
+<center><form  name="calculator" >
+
+<table>
+  <tr><th>
+    <b  id ="date"> Время </b>
+    <br>
+    <br><br>
+    <input type="Number" name="radius" placeholder="Введите Радиус" value=""><br>
+<br><input  type="number" place name="vitki" placeholder="Введите кол-во Витков"  value=""><br>
+<br><center>ширина рулона</center>
+
+<input type ="button"style = "min-height: 45"name ="b1" class="click_me" id="id_1" value ="1.5м"
+onClick= "setvalue(1.5)">
+<input style = "min-height: 45"type ="button"class="click_me" id="id_2" value ="2м"
+onClick= "setvalue(2)">
+<input style = "min-height: 45 "type ="button" class="click_me" id="id_3"value ="3м"
+onClick= "setvalue(3)">
+<input type="button" class="click_me" id="id_5" value ="4м"
+onClick= "setvalue(4)">
+<br><br><br>
+         
+<input type="button" value="Считать" onclick="calculate()"><br>
+
+<br> Площадь = <b id ="Sresult" OnClick ="calculate()"></b><br>
+<br><i>Длина </i>= <i id="Length" value=></i><br>
+</center>
+
+
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    
+    <script>
+    				w =1.04;
+        function setvalue(width){
+    				 				w=width;
+    				
+    				 				
+    				 }
+        function calculate(){
+
+            r = parseFloat(document.calculator.radius.value.replace(/,/, '.'));
+            v = parseFloat(document.calculator.vitki.value.replace(/,/, '.'));
+            
+            result = (r+r+23)/100*3.15 / 2 * v * w;
+            document.getElementById('Sresult').innerHTML=parseFloat(result).toFixed(2);
+            document.getElementById('Length').innerHTML= parseFloat(result/w);
+        }
+
+        document.addEventListener("click", function(thenew)
+{
+
+  if_id = thenew . target. id;
+
+  the_class = thenew . target.className;
+
+  if(the_class == "click_me")
+
+  {
+
+    if_id = document.getElementById(if_id);
+
+    if(if_id .style . background == "red")
+
+    {
+
+      if_id .style . background = "#efefef";
+
+    }
+
+    else
+
+    {
+
+      var links = document.querySelectorAll(".click_me");
+
+      links.forEach(link => {
+
+        link.setAttribute("style", "background:#efefef");
+
+      })
+
+      if_id .style . background = "red";
+
+    }
+
+  }
+
+});
+    </script>
+<script>
+  var date = new Date;
+  function setTime(){
+  document.getElementById('date').innerHTML=date.getHours() + ' : ' + date.getMinutes() ; ;}
+  
+
+  
+  window.setInterval(setTime(), 10);
+</script>
+</body>
+</html>
